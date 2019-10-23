@@ -39,7 +39,7 @@ const StyledPage = styled.div.attrs( props => ({
 const DisplayEvent = ( props ) => {
 
   const user  = props.user;
-  const { event } = props.location.state;
+  const { event } = props.location.state || props.event;
 
   const tempArray = [];
   const max_cards = 10;

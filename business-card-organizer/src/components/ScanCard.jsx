@@ -7,16 +7,14 @@ import Header from './Header';
 
 const ScanCard = ( props ) => {
 
-  const scan = {
-    result: 'No result'
-  }
-
   const handleScan = data => {
     
     if ( data ) {
       props.history.push( {
         pathname: '/scan-result',
-        state: { data: data, user: props.user }
+        state: {
+          data: data
+        }
       } );
     }
   }
