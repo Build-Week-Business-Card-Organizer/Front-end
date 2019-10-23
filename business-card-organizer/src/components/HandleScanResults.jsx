@@ -32,6 +32,7 @@ const HandleScanResults = ( props ) => {
   //   :  add card to chosen collection/event
 
   const card = {
+    company: '',
     name:    '',
     email:   '',
     phone:   '',

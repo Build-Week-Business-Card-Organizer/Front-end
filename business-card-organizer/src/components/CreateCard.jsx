@@ -58,39 +58,46 @@ const CreateCard = ( { values, touched, errors, status, setCurrentUser, user } )
       <h1>Card Details:</h1>
       <Form>
         <StyledFields className='form-field-wrapper'>
-        <Field
-          type = 'text'
-          name = 'name'
-          placeholder = 'Name' />
-        { touched.name && errors.name && (
-          <p className = 'error'>{ errors.name }</p>
-        )}
+          <Field
+            type = 'text'
+            name = 'name'
+            placeholder = 'Name' />
+          { touched.name && errors.name && (
+            <p className = 'error'>{ errors.name }</p>
+          )}
+          <Field
+            type = 'text'
+            name = 'name'
+            placeholder = 'Name' />
+          { touched.name && errors.name && (
+            <p className = 'error'>{ errors.name }</p>
+          )}
 
-        <Field
-          type = 'text'
-          name = 'email'
-          placeholder = 'Email' />
-        { touched.email && errors.email && (
-          <p className = 'error'>{ errors.email }</p>
-        )}
+          <Field
+            type = 'text'
+            name = 'email'
+            placeholder = 'Email' />
+          { touched.email && errors.email && (
+            <p className = 'error'>{ errors.email }</p>
+          )}
 
-        <Field
-          type = 'text'
-          name = 'phone'
-          placeholder = '(123) 123-1234' />
-        { touched.phone && errors.phone && (
-          <p className = 'error'>{ errors.phone }</p>
-        )}
+          <Field
+            type = 'text'
+            name = 'phone'
+            placeholder = '(123) 123-1234' />
+          { touched.phone && errors.phone && (
+            <p className = 'error'>{ errors.phone }</p>
+          )}
 
-        <Field
-          type = 'text'
-          name = 'website'
-          placeholder = 'Website' />
-        { touched.website && errors.website && (
-          <p className = 'error'>{ errors.website }</p>
-        )}
+          <Field
+            type = 'text'
+            name = 'website'
+            placeholder = 'Website' />
+          { touched.website && errors.website && (
+            <p className = 'error'>{ errors.website }</p>
+          )}
 
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
         </StyledFields>
       </Form>
       </StyledForm>
@@ -102,6 +109,7 @@ const FormikCreateCard = withFormik( {
   enableReinitialize: true,
   mapPropsToValues( { user } ) {
     return {
+      company: user.card.company || '',
       name:    user.card.name    || user.name  || '',
       email:   user.card.email   || user.email || '',
       phone:   user.card.phone   || '',
@@ -110,6 +118,7 @@ const FormikCreateCard = withFormik( {
   },
   validationSchema: Yup.object().shape({
     // TODO: validatioin
+    company: Yup.string().required(),
     name:   Yup.string ().required(),
     email:  Yup.string ().required(),
     phone:  Yup.string ().matches(

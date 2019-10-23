@@ -64,6 +64,7 @@ const Card = ( props ) => {
   const user = props.user;
   const card = props.card ? props.card : user.card;
 
+  const company = card.company;
   const name    = card.name;
   const email   = card.email;
   const phone   = card.phone;
@@ -71,7 +72,7 @@ const Card = ( props ) => {
   const codeUrl = card.codeUrl;
 
   const code = codeUrl === 'testing'
-  ? <CreateQRCode user={ user } setCurrentUser={ props.setCurrentUser } />
+  ? <CreateQRCode user={ user    } setCurrentUser={ props.setCurrentUser } />
   : <GetQRCode codeUrl={ codeUrl } />;
 
   return (
@@ -79,7 +80,8 @@ const Card = ( props ) => {
       <StyledContent className='card-content'>
         <img src={ card.img } alt='' />
         <ul>
-          <li>{ name   }</li>
+          <li>{ company }</li>
+          <li>{ name    }</li>
           <li>{ email   }</li>
           <li>{ phone   }</li>
           <li>{ website }</li>

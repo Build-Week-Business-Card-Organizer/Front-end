@@ -44,7 +44,6 @@ const AddToEvent = ( props ) => {
     } );
 
     props.setCurrentUser( editedUser );
-    props.history.push(  );
     props.history.push( {
       pathname: `/events/{ eventName }`,
       state: {
