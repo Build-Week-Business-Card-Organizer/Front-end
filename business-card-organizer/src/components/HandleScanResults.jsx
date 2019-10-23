@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Header from './Header';
+import AddToDefault from './AddToDefault';
+import AddToEvent from './AddToEvent';
 
 const StyledPage = styled.div.attrs( props => ({
   className: 'scanned-container',
@@ -11,6 +13,11 @@ const StyledPage = styled.div.attrs( props => ({
   overflow: hidden;
   display: flex;
   justify-content: center;
+
+  div {
+    align-self: center;
+    justify-content: center;
+  }
 `;
 
 const StyledP = styled.p`
@@ -19,16 +26,26 @@ const StyledP = styled.p`
 `;
 
 const HandleScanResults = ( props ) => {
-  const { data, user } = props.location.state;
+  const { data } = props.location.state;
 
+  // TODO data should be the url for an axios call that returns the scanned user's card object
+  //   :  add card to chosen collection/event
 
-  // TODO find the codeUrl and get matching user info to fill out card
-  //   :  add card to chosen collection
+  const card = {
+    name:    '',
+    email:   '',
+    phone:   '',
+    website: ''
+  }
 
   return (
     <StyledPage className='scanned-container'>
-      <Header user={ user } />
+      <Header user={ props.user } />
       <StyledP>{ data }</StyledP>
+      <div>
+        <AddToDefault user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card= { card } />
+        <AddToEvent user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card= { card } />
+      </div>
     </StyledPage>
   );
 }

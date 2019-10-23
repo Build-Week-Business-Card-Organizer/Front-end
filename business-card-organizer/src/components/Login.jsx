@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+// import { withFormik, Form, Field } from 'formik';
+// import * as Yup from 'yup';
+import { Form } from 'formik';
 import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -111,6 +112,11 @@ const StyledLinks = styled.div.attrs( props => ({
 //     props.history.push('/create-card');
 //    }
 // } ) ( Login );
+
+
+
+// TODO  we need a submit button handler that gets the user
+//       and populates all the user's fields from BE to update user with setCurrentUser
 
 class Login extends React.Component {
   state = {

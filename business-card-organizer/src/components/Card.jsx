@@ -70,9 +70,9 @@ const Card = ( props ) => {
   const website = card.website;
   const codeUrl = card.codeUrl;
 
-  const code = codeUrl === 'testing' ?
-    <CreateQRCode user={ user } setCurrentUser={ props.setCurrentUser } /> :
-    <GetQRCode codeUrl={ codeUrl } />;
+  const code = codeUrl === 'testing'
+  ? <CreateQRCode user={ user } setCurrentUser={ props.setCurrentUser } />
+  : <GetQRCode codeUrl={ codeUrl } />;
 
   return (
     <StyledCard className='card'>
