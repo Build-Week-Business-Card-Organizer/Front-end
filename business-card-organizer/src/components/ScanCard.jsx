@@ -12,7 +12,7 @@ const StyledPage = styled.div.attrs( props => ({
   height: 100vh;
   overflow: hidden;
   display: flex;
-  color: #191A2A;
+  color: #59667A;
   background-color: #1C1C1C;
   flex-direction: column;
   justify-content: center;
