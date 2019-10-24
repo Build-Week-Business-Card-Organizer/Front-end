@@ -14,6 +14,8 @@ const StyledPage = styled.div.attrs( props => ({
   overflow: hidden;
   display: flex;
   justify-content: center;
+  color: #191A2A;
+  background-color: #E7E3D6;
 `;
 
 const StyledForm = styled.div.attrs( props => ({
@@ -29,7 +31,7 @@ const StyledForm = styled.div.attrs( props => ({
   flex-direction: column;
   align-self: center;
   justify-content: space-evenly;
-  box-shadow: 0 0 8px rgba( 33, 33, 33, 0.17);
+  box-shadow: 0 0 12px rgba( 129, 143, 145, 0.4);
 `;
 
 const StyledFields = styled.div.attrs( props => ({
@@ -56,21 +58,6 @@ const StyledLinks = styled.div.attrs( props => ({
   justify-content: space-between;
 `;
 
-//new auth
-
-// const [creds, setCreds] = useState('');
-
-// axiosWithAuth()
-// .post('https://card-organizer.herokuapp.com/login')
-// .then(res => {
-//   console.log(res)
-//   // localStorage.setItem('token', res);
-//   // this.props.history.push('/edit-card');
-// })
-// .catch(err => console.log(err.response));
-
-// end of new auth
-
 class Login extends React.Component {
   state = {
     credentials: {
@@ -78,7 +65,6 @@ class Login extends React.Component {
       password: ''
     }
   };
-
 
   handleChange = e => {
     this.setState({
@@ -102,7 +88,7 @@ class Login extends React.Component {
     .then(res => {
       console.log(res)
       // localStorage.setItem('token', res);
-      this.props.history.push('/card');
+      this.props.history.push('/edit-card');
     })
     .catch(err => console.log(err.response));
     };
