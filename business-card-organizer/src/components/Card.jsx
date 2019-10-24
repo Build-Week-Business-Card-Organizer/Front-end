@@ -25,10 +25,10 @@ const StyledCard = styled.div.attrs( props => ({
     text-align: center;
     border-top: 1px solid rgba( 33, 33, 33, 0.17);
     padding-top: 1rem;
+  }
 
-    &:hover {
-      cursor: pointer;
-    }
+  summary:hover {
+    cursor: pointer;
   }
 
   details textarea{
