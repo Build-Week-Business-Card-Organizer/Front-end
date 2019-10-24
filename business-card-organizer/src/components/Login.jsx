@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const StyledPage = styled.div.attrs( props => ({
   className: 'login',
@@ -55,62 +56,20 @@ const StyledLinks = styled.div.attrs( props => ({
   justify-content: space-between;
 `;
 
-// const Login = ( { values, touched, errors, status, setCurrentUser, user } ) => {
+//new auth
 
-//   return (
-//     <StyledPage className='login'>
-//       <StyledForm className='user-form'>
-//         <h1>Login:</h1>
-//         <Form>
-//           <StyledFields className='form-field-wrapper'>
-//           <Field
-//             type = 'text'
-//             name = 'name'
-//             placeholder = 'Name' />
-//           { touched.name && errors.name && (
-//             <p className = 'error'>{ errors.name }</p>
-//           )}
+// const [creds, setCreds] = useState('');
 
-//           <Field
-//             type = 'text'
-//             name = 'passwd'
-//             placeholder = 'Password' />
-//           { touched.passwd && errors.passwd && (
-//             <p className = 'error'>{ errors.passwd }</p>
-//           )}
+// axiosWithAuth()
+// .post('https://card-organizer.herokuapp.com/login')
+// .then(res => {
+//   console.log(res)
+//   // localStorage.setItem('token', res);
+//   // this.props.history.push('/edit-card');
+// })
+// .catch(err => console.log(err.response));
 
-//           <button type="submit">Submit</button>
-//           </StyledFields>
-//         </Form>
-//         <StyledLinks className='links'>
-//           <NavLink to={ '/register'   } activeClassName='link-active'>Register</NavLink>
-//           <NavLink to={ '/pass-reset' } activeClassName='link-active'>Forgot Password</NavLink>
-//         </StyledLinks>
-//       </StyledForm>
-//     </StyledPage>
-//   );
-// };
-
-// const FormikLogin = withFormik( {
-//   mapPropsToValues( { name, email, passwd, tos } ) {
-//     return {
-//       name:     name || '',
-//       passwd: passwd || ''
-//     };
-//   },
-//   validationSchema: Yup.object().shape({
-//     name:   Yup.string ().required(),
-//     passwd: Yup.string ().required()
-//   }),
-//   handleSubmit( values, { props, resetForm } ) {
-//     // TODO: still need to authenticate user
-//     props.setCurrentUser( values );
-
-//     resetForm();
-
-//     props.history.push('/create-card');
-//    }
-// } ) ( Login );
+// end of new auth
 
 class Login extends React.Component {
   state = {
@@ -119,6 +78,7 @@ class Login extends React.Component {
       password: ''
     }
   };
+
 
   handleChange = e => {
     this.setState({
@@ -133,16 +93,19 @@ class Login extends React.Component {
     e.preventDefault();
     // login to retrieve the JWT token
     // add the token to localstorage
-    // route to /protected (whatever landing page)
+    console.log(this.state.credentials);
+
+    const credentials = `grant_type=password&username=${this.state.credentials.username}&password=${this.state.credentials.password}`
+
     axiosWithAuth()
-      .post('/api/login', this.state.credentials)
-      .then(res => {
-        // console.log(res.data.payload)
-        localStorage.setItem('token', res.data.payload);
-        this.props.history.push('/card');
-      })
-      .catch(err => console.log(err.response));
-  };
+    .post('/login', credentials)
+    .then(res => {
+      console.log(res)
+      // localStorage.setItem('token', res);
+      this.props.history.push('/card');
+    })
+    .catch(err => console.log(err.response));
+    };
 
   render() {
     // if (localStorage.getItem('token')) {
