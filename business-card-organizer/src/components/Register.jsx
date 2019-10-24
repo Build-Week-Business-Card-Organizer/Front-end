@@ -219,8 +219,9 @@ const FormikRegister = withFormik( {
 
     values.events = [];
     values.card   = {};
-    values.notes  = '';
     values.id     = uuid.v4();
+
+    values.card.notes  = '';
 
     values.defaultCollection = [];
 

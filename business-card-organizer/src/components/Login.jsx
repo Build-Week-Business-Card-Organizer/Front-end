@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+// import { withFormik, Form, Field } from 'formik';
+// import * as Yup from 'yup';
+import { Form } from 'formik';
 import styled from 'styled-components';
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -57,6 +58,68 @@ const StyledLinks = styled.div.attrs( props => ({
   margin: 0 auto;
   justify-content: space-between;
 `;
+
+// const Login = ( { values, touched, errors, status, setCurrentUser, user } ) => {
+
+//   return (
+//     <StyledPage className='login'>
+//       <StyledForm className='user-form'>
+//         <h1>Login:</h1>
+//         <Form>
+//           <StyledFields className='form-field-wrapper'>
+//           <Field
+//             type = 'text'
+//             name = 'name'
+//             placeholder = 'Name' />
+//           { touched.name && errors.name && (
+//             <p className = 'error'>{ errors.name }</p>
+//           )}
+
+//           <Field
+//             type = 'text'
+//             name = 'passwd'
+//             placeholder = 'Password' />
+//           { touched.passwd && errors.passwd && (
+//             <p className = 'error'>{ errors.passwd }</p>
+//           )}
+
+//           <button type="submit">Submit</button>
+//           </StyledFields>
+//         </Form>
+//         <StyledLinks className='links'>
+//           <NavLink to={ '/register'   } activeClassName='link-active'>Register</NavLink>
+//           <NavLink to={ '/pass-reset' } activeClassName='link-active'>Forgot Password</NavLink>
+//         </StyledLinks>
+//       </StyledForm>
+//     </StyledPage>
+//   );
+// };
+
+// const FormikLogin = withFormik( {
+//   mapPropsToValues( { name, email, passwd, tos } ) {
+//     return {
+//       name:     name || '',
+//       passwd: passwd || ''
+//     };
+//   },
+//   validationSchema: Yup.object().shape({
+//     name:   Yup.string ().required(),
+//     passwd: Yup.string ().required()
+//   }),
+//   handleSubmit( values, { props, resetForm } ) {
+//     // TODO: still need to authenticate user
+//     props.setCurrentUser( values );
+
+//     resetForm();
+
+//     props.history.push('/create-card');
+//    }
+// } ) ( Login );
+
+
+
+// TODO  we need a submit button handler that gets the user
+//       and populates all the user's fields from BE to update user with setCurrentUser
 
 class Login extends React.Component {
   state = {
