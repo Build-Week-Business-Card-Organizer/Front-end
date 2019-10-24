@@ -88,9 +88,12 @@ class Login extends React.Component {
     .then(res => {
       console.log(res)
       // localStorage.setItem('token', res);
-      this.props.history.push('/edit-card');
+      this.props.history.push('/account');
     })
-    .catch(err => console.log(err.response));
+    .catch(err => {
+      alert('password or username is incorrect')
+      console.log(err.response)
+    });
     };
 
   render() {
