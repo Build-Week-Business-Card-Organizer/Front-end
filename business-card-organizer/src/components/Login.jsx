@@ -14,6 +14,8 @@ const StyledPage = styled.div.attrs( props => ({
   overflow: hidden;
   display: flex;
   justify-content: center;
+  color: #191A2A;
+  background-color: #E7E3D6;
 `;
 
 const StyledForm = styled.div.attrs( props => ({
@@ -29,7 +31,7 @@ const StyledForm = styled.div.attrs( props => ({
   flex-direction: column;
   align-self: center;
   justify-content: space-evenly;
-  box-shadow: 0 0 8px rgba( 33, 33, 33, 0.17);
+  box-shadow: 0 0 12px rgba( 129, 143, 145, 0.4);
 `;
 
 const StyledFields = styled.div.attrs( props => ({

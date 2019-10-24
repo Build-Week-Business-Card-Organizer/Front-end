@@ -13,6 +13,8 @@ const StyledPage = styled.div.attrs( props => ({
   height: 100vh;
   overflow: hidden;
   display: flex;
+  color: #191A2A;
+  background-color: #E7E3D6;
   flex-direction: column;
   justify-content: center;
 `;
@@ -30,7 +32,7 @@ const StyledForm = styled.div.attrs( props => ({
   flex-direction: column;
   align-self: center;
   justify-content: space-evenly;
-  box-shadow: 0 0 8px rgba( 33, 33, 33, 0.17);
+  box-shadow: 0 0 12px rgba( 129, 143, 145, 0.4);
 `;
 
 const StyledFields = styled.div.attrs( props => ({
@@ -60,10 +62,10 @@ const CreateCard = ( { values, touched, errors, status, setCurrentUser, user } )
         <StyledFields className='form-field-wrapper'>
           <Field
             type = 'text'
-            name = 'name'
-            placeholder = 'Name' />
-          { touched.name && errors.name && (
-            <p className = 'error'>{ errors.name }</p>
+            name = 'company'
+            placeholder = 'Company' />
+          { touched.company && errors.company && (
+            <p className = 'error'>{ errors.company }</p>
           )}
           <Field
             type = 'text'
@@ -118,10 +120,10 @@ const FormikCreateCard = withFormik( {
   },
   validationSchema: Yup.object().shape({
     // TODO: validatioin
-    company: Yup.string().required(),
-    name:   Yup.string ().required(),
-    email:  Yup.string ().required(),
-    phone:  Yup.string ().matches(
+    company: Yup.string ().required(),
+    name:    Yup.string ().required(),
+    email:   Yup.string ().required(),
+    phone:   Yup.string ().matches(
       /^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,3})|(\(?\d{2,3}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/,
       'Phone number is not valid'), //https://www.sitepoint.com/community/t/phone-number-regular-expression-validation/2204/5
     website: Yup.string ().required(),
@@ -130,6 +132,8 @@ const FormikCreateCard = withFormik( {
 
     const updatedUser = { ...props.user };
     updatedUser.card  = { ...values     };
+    
+    updatedUser.card.notes = '';
 
     // TODO: get url from backend and store in:
     updatedUser.card.codeUrl = 'testing';
