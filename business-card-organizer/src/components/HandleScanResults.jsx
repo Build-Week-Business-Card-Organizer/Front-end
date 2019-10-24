@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import styled from 'styled-components';
 
 import Header from './Header';
@@ -27,17 +28,27 @@ const StyledP = styled.p`
 
 const HandleScanResults = ( props ) => {
   const { data } = props.location.state;
-
+  const card = {};
   // TODO data should be the url for an axios call that returns the scanned user's card object
   //   :  add card to chosen collection/event
+  /* useEffect( () =>{
+    axios
+      .get( data )
+      .then( response => {
 
-  const card = {
-    name:    '',
-    email:   '',
-    phone:   '',
-    website: ''
-  }
-
+        // ???
+        card.company = response.company;
+        card.name    = response.name;
+        card.email   = response.email;
+        card.phone   = response.phone;
+        card.website = response.website;
+      })
+      .catch(error => {
+        console.error( error );
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [] );
+ */
   return (
     <StyledPage className='scanned-container'>
       <Header user={ props.user } />

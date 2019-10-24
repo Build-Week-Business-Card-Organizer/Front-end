@@ -13,8 +13,6 @@ import DisplayEvent      from './components/DisplayEvent';
 import CreateEvent       from './components/CreateEvent';
 import HandleScanResults from './components/HandleScanResults';
 import DefaultCollection from './components/DefaultCollection';
-import AddToDefault      from './components/AddToDefault';
-import AddToEvent        from './components/AddToEvent';
 
 
 
@@ -81,26 +79,14 @@ function App() {
           <DefaultCollection { ...props } 
             user={ currentUser } /> }
       />
-      <Route exact path='/add-default'
-        render={ ( props ) =>
-          <AddToDefault { ...props }
-            user           = { currentUser    }
-            setCurrentUser = { setCurrentUser } /> }
-      />
-      <Route exact path='/add-to-event'
-        render={ ( props ) =>
-          <AddToEvent { ...props }
-            user           = { currentUser    }
-            setCurrentUser = { setCurrentUser } /> }
-      />
       <Route exact path='/scan-result'
         render={ ( props ) =>
           <HandleScanResults { ...props }
           user           = { currentUser    }
           setCurrentUser = { setCurrentUser } /> }
       />
-      <Route exact path='/pass-reset'   component={ PasswordReset } />
-      <Route exact path='/scan-card'    component={ ScanCard      } />
+      <Route exact path='/pass-reset' component={ PasswordReset } />
+      <Route exact path='/scan-card'  component={ ScanCard      } />
     </div>
   );
 }

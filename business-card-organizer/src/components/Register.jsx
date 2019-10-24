@@ -12,6 +12,8 @@ const StyledPage = styled.div.attrs( props => ({
   height: 100vh;
   overflow: hidden;
   display: flex;
+  color: #191A2A;
+  background-color: #E7E3D6;
   justify-content: center;
 `;
 
@@ -28,7 +30,7 @@ const StyledForm = styled.div.attrs( props => ({
   flex-direction: column;
   align-self: center;
   justify-content: space-evenly;
-  box-shadow: 0 0 8px rgba( 33, 33, 33, 0.17);
+  box-shadow: 0 0 12px rgba( 129, 143, 145, 0.4);
 `;
 
 const StyledFields = styled.div.attrs( props => ({
@@ -118,8 +120,9 @@ const FormikRegister = withFormik( {
     // TODO: still need to store user either to DB or ? json file perhaps without BE
     values.events = [];
     values.card   = {};
-    values.notes  = '';
     values.id     = uuid.v4();
+
+    values.card.notes  = '';
 
     values.defaultCollection = [];
 
