@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the business-card-organizer directory run:
 
-### 'yarn add'
+### `yarn add`
 To add the following dependencies:<br />
 
   react-router-dom<br />
@@ -18,7 +18,7 @@ To add the following dependencies:<br />
   uuid<br />
   react-qr-reader<br />
 
-### 'yarn start'
+### `yarn start`
 To start the development server.<br /><br />
 
 
