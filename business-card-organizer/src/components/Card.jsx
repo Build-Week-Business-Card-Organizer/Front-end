@@ -25,6 +25,10 @@ const StyledCard = styled.div.attrs( props => ({
     text-align: center;
     border-top: 1px solid rgba( 33, 33, 33, 0.17);
     padding-top: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   details textarea{
@@ -78,6 +82,14 @@ const Card = ( props ) => {
   ? <CreateQRCode user={ user    } setCurrentUser={ props.setCurrentUser } />
   : <GetQRCode codeUrl={ codeUrl } />;
 
+  if ( notes ) { document.querySelector( '#notes' ).value = notes; }
+/* 
+  const submit = () => {
+    const modifiedUser = { ...user };
+    modifiedUser.card.notes = document.querySelector( '#notes' ).value;
+    props.setCurrentUser( modifiedUser );
+  };
+ */
   return (
     <StyledCard className='card'>
       <StyledContent className='card-content'>
@@ -95,7 +107,10 @@ const Card = ( props ) => {
       </StyledContent>
       <details>
         <summary>Notes:</summary>
-        <textarea rows='4'>{card.notes}</textarea>
+        {/* <form onSubmit={ submit }> */}
+        <textarea id='notes' rows='4'></textarea>
+        {/* <input type='submit' value='Submit' /> */}
+        {/* </form> */}
       </details>
     </StyledCard>
   );

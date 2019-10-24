@@ -4,6 +4,7 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import Header from './Header';
 
 
 const StyledPage = styled.div.attrs( props => ({
@@ -12,7 +13,7 @@ const StyledPage = styled.div.attrs( props => ({
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  color: #191A2A;
+  color: #59667A;
   background-color: #E7E3D6;
   display: flex;
   justify-content: center;
@@ -52,6 +53,7 @@ const Account = ( { values, touched, errors, status, setCurrentUser, user } ) =>
 
   return (
     <StyledPage className='account'>
+      <Header user={ user } />
       <StyledForm className='user-form'>
         <h1>Account Details</h1>
         <Form>

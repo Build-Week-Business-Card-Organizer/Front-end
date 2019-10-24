@@ -14,10 +14,18 @@ const StyledPage = styled.div.attrs( props => ({
   overflow: hidden;
   display: flex;
   justify-content: center;
+  color: #59667A;
+  background-color: #E7E3D6;
 
   div {
     align-self: center;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin: 1rem 0;
   }
 `;
 
@@ -52,10 +60,10 @@ const HandleScanResults = ( props ) => {
   return (
     <StyledPage className='scanned-container'>
       <Header user={ props.user } />
-      <StyledP>{ data }</StyledP>
       <div>
-        <AddToDefault user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card= { card } />
-        <AddToEvent user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card= { card } />
+        <StyledP>{ data }</StyledP>
+        <AddToDefault user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card={ card } />
+        <AddToEvent user={ props.user } setCurrentUser={ props.setCurrentUser } history={ props.history } card={ card } />
       </div>
     </StyledPage>
   );

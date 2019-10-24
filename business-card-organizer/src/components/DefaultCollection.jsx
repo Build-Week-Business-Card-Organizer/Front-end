@@ -16,6 +16,8 @@ const StyledPage = styled.div.attrs( props => ({
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #59667A;
+  background-color: #E7E3D6;
 
   .event-container {
     display: flex;

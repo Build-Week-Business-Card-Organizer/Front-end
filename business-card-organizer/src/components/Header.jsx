@@ -24,6 +24,7 @@ const StyledHeader = styled.header`
     align-self: center;
     text-decoration: none;
     padding: 1rem;
+    color: #59667A;
     border-radius: 0.8rem;
 
     &:hover {

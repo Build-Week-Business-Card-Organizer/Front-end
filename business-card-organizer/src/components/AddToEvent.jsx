@@ -17,7 +17,6 @@ const StyledFieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
   text-align: start;
-  box-shadow: 0 0 12px rgba( 129, 143, 145, 0.4);
 `;
 
 const StyledLabel = styled.label`
