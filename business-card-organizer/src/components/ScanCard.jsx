@@ -47,7 +47,7 @@ const ScanCard = ( props ) => {
 
   return (
     <StyledPage className='page'>
-      {/* <Header user={ props.user } /> */}
+      <Header user={ props.user } />
       <StyledContainer className='reader-container'>
         <QrReader
           delay={ 300 }
