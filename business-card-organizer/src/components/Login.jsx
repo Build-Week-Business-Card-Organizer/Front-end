@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { withFormik, Form, Field } from 'formik';
 // import * as Yup from 'yup';
 import { Form } from 'formik';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const StyledPage = styled.div.attrs( props => ({
   className: 'login',
@@ -141,16 +142,22 @@ class Login extends React.Component {
     e.preventDefault();
     // login to retrieve the JWT token
     // add the token to localstorage
-    // route to /protected (whatever landing page)
+    console.log(this.state.credentials);
+
+    const credentials = `grant_type=password&username=${this.state.credentials.username}&password=${this.state.credentials.password}`
+
     axiosWithAuth()
-      .post('/api/login', this.state.credentials)
-      .then(res => {
-        // console.log(res.data.payload)
-        localStorage.setItem('token', res.data.payload);
-        this.props.history.push('/card');
-      })
-      .catch(err => console.log(err.response));
-  };
+    .post('/login', credentials)
+    .then(res => {
+      console.log(res)
+      // localStorage.setItem('token', res);
+      this.props.history.push('/account');
+    })
+    .catch(err => {
+      alert('password or username is incorrect')
+      console.log(err.response)
+    });
+    };
 
   render() {
     // if (localStorage.getItem('token')) {

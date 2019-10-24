@@ -3,6 +3,8 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import uuid from 'uuid';
+import axiosWithAuthTwo from '../utils/axiosWithAuthTwo';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 const StyledPage = styled.div.attrs( props => ({
@@ -46,6 +48,92 @@ const StyledFields = styled.div.attrs( props => ({
     margin: 0.4rem;
   }
 `;
+
+// class Register extends React.Component {
+//   state = {
+//     credentials: {
+//       username: '',
+//       password: ''
+//     }
+//   };
+
+//   handleChange = e => {
+//     this.setState({
+//       credentials: {
+//         ...this.state.credentials,
+//         [e.target.name]: e.target.value
+//       }
+//     });
+//   };
+
+//   login = e => {
+//     e.preventDefault();
+//     // login to retrieve the JWT token
+//     // add the token to localstorage
+//     console.log(this.state.credentials);
+
+//     const credentials = `grant_type=password&username=${this.state.credentials.username}&password=${this.state.credentials.password}`
+
+//     axiosWithAuth()
+//     .post('/login', credentials)
+//     .then(res => {
+//       console.log(res)
+//       // localStorage.setItem('token', res);
+//       this.props.history.push('/edit-card');
+//     })
+//     .catch(err => console.log(err.response));
+//     };
+
+//   render() {
+//     // if (localStorage.getItem('token')) {
+//     //   return <Redirect to="/login" />;
+//     // }
+//     return (
+//       <StyledPage className='login'>
+//         <StyledForm className='user-form'>
+//         <h1>Register:</h1>
+//         <Form onSubmit={this.login}>
+//           <StyledFields className='form-field-wrapper'>
+//           <input
+//             type="text"
+//             name="username"
+//             placeholder="username"
+//             value={this.state.credentials.username}
+//             onChange={this.handleChange}
+//           />
+//           </StyledFields>
+//           {/* <StyledFields>
+//             <input
+//             type="text"
+//             name="email"
+//             placeholder="email"
+//             value={this.state.credentials.email}
+//             onChange={this.state.handleChange}
+//             />
+//           </StyledFields> */}
+//           <StyledFields>
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="password"
+//             value={this.state.credentials.password}
+//             onChange={this.handleChange}
+//           />
+          
+//           <button type="submit">Log in</button>
+//           </StyledFields>
+//         </Form>
+//         {/* <StyledLinks className='links'>
+//            <NavLink to={ '/register'   } activeClassName='link-active'>Register</NavLink>
+//            <NavLink to={ '/pass-reset' } activeClassName='link-active'>Forgot Password</NavLink>
+//          </StyledLinks> */}
+//          </StyledForm>
+//       </StyledPage>
+//     );
+//   }
+// }
+
+// export default Register;
 
 const Register = ( { values, touched, errors, status, setCurrentUser, user } ) => {
 
@@ -118,6 +206,17 @@ const FormikRegister = withFormik( {
   }),
   handleSubmit( values, { props, resetForm } ) {
     // TODO: still need to store user either to DB or ? json file perhaps without BE
+    console.log(props, values)
+
+    // const credentials = `grant_type=password&username=${this.state.credentials.username}&password=${this.state.credentials.password}`
+
+    // axiosWithAuthTwo()
+    // .post('/login', credentials)
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .catch(err => console.log(err))
+
     values.events = [];
     values.card   = {};
     values.id     = uuid.v4();
